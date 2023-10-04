@@ -61,8 +61,79 @@ void MyGameEngine::render(RenderModes renderMode) {
         drawAxis();
     }
     
-#pragma region direct draw test
+#pragma region draw square
+
     glRotated(angle, 0, 0, 1);
+
+    glBegin(GL_LINE_STRIP);
+
+    glColor4ub(255, 0, 0, 255);
+    glVertex3d(1, -1, 1);
+    glVertex3d(1, -1, -1);
+    glVertex3d(1, 1, -1);
+    glColor4ub(255, 0, 0, 255);
+
+    glVertex3d(1, 1, -1);
+    glVertex3d(1, -1, 1);
+    glVertex3d(1, 1, 1);
+    
+    glColor4ub(0, 255, 0, 255);
+    glVertex3d(-1, -1, 1);
+    glVertex3d(-1, -1, -1);
+    glVertex3d(-1, 1, -1);
+    glColor4ub(0, 255, 0, 255);
+    glVertex3d(-1, 1, -1);
+    glVertex3d(-1, -1, 1);
+    glVertex3d(-1, 1, 1);
+
+
+    glColor4ub(0, 0, 255, 255);
+    glVertex3d(-1, 1, 1);
+    glVertex3d(-1, 1, -1);
+    glVertex3d(1, 1, -1);
+    glColor4ub(0, 0, 255, 255);
+    glVertex3d(1, 1, -1);
+    glVertex3d(-1, 1, 1);
+    glVertex3d(1, 1, 1);
+
+    glColor4ub(255, 255, 0, 255);
+    glVertex3d(-1, -1, 1);
+    glVertex3d(-1, -1, -1);
+    glVertex3d(1, -1, -1);
+    glColor4ub(255, 255, 0, 255);
+    glVertex3d(1, -1, -1);
+    glVertex3d(-1, -1, 1);
+    glVertex3d(1, -1, 1);
+
+
+    glColor4ub(255, 0, 255, 255);
+    glVertex3d(1, -1, 1);
+    glVertex3d(-1, -1, 1);
+    glVertex3d(-1, 1, 1);
+    glColor4ub(255, 0, 255, 255);
+    glVertex3d(-1, 1, 1);
+    glVertex3d(1, -1, 1);
+    glVertex3d(1, 1, 1);
+
+    glColor4ub(0, 255, 255, 255);
+    glVertex3d(1, -1, -1);
+    glVertex3d(-1, -1, -1);
+    glVertex3d(-1, 1, -1);
+    glColor4ub(0, 255, 255, 255);
+    glVertex3d(-1, 1, -1);
+    glVertex3d(1, -1, -1);
+    glVertex3d(1, 1, -1);
+
+    glEnd();
+
+
+#pragma endregion
+
+
+
+
+#pragma region direct draw test
+    /*glRotated(angle, 0, 0, 1);
 
     glColor4ub(255, 0, 0, 255);
     glBegin(GL_TRIANGLES);
@@ -74,7 +145,7 @@ void MyGameEngine::render(RenderModes renderMode) {
     glVertex3d(-0.25, 0.25, 0);
     glVertex3d(0, -0.25, 0);
 
-    glEnd();
+    glEnd();*/
 #pragma endregion
 
 }

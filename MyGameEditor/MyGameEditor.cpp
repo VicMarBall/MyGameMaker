@@ -8,6 +8,8 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_opengl.h"
 
+#include "EditorUI.h"
+
 #include "../MyGameEngine/MyGameEngine.h"
 
 using namespace std;
@@ -60,12 +62,15 @@ static void initOpenGL() {
     if(!GLEW_VERSION_3_1) throw exception("OpenGL 3.1 Not Supported!");
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     glClearColor(1, 1, 1, 1);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
 }
 
 static bool processSDLEvents() {
     SDL_Event event;
     while (SDL_PollEvent(&event))
     {
+        ImGui_ImplSDL2_ProcessEvent(&event);
         switch (event.type) {
         case SDL_QUIT: return false;
         case SDL_KEYDOWN:
@@ -94,18 +99,25 @@ int main(int argc, char* argv[])
         engine.camera.center = vec3(0, 1, 0);
         engine.camera.up = vec3(0, 1, 0);
 
+        EditorUI ui;
+        ui.Start(window, gl_context);
+
 
         while (processSDLEvents()) {
             const auto frame_start = steady_clock::now();
+            ui.PreUpdate();
             engine.step(FDT);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+            ui.PreRender();
             engine.render(MyGameEngine::RenderModes::DEBUG);
+            ui.PostRender();
             SDL_GL_SwapWindow(window);
             const auto frame_end = steady_clock::now();
             const auto frame_duration = frame_end - frame_start;
             if (frame_duration < FDT) this_thread::sleep_for(FDT - frame_duration);
         }
 
+        ui.Cleanup();
         SDL_GL_DeleteContext(gl_context);
         SDL_DestroyWindow(window);
         SDL_Quit();
