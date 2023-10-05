@@ -75,7 +75,9 @@ public:
 		ImGui::NewFrame();
 
 		if (dockSpaceEnabled) {
-			ImGui::DockSpaceOverViewport();
+			ImGuiDockNodeFlags dock_flags = 0;
+			dock_flags |= ImGuiDockNodeFlags_PassthruCentralNode;
+			ImGui::DockSpaceOverViewport(0, dock_flags);
 		}
 
 		if (ImGui::BeginMainMenuBar()) {
