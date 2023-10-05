@@ -2,6 +2,8 @@
 #include <GL\glew.h>
 #include <glm/ext/matrix_transform.hpp>
 
+#include "Shapes3D.h"
+
 static double angle = 0.0;
 
 void MyGameEngine::step(std::chrono::duration<double> dt) {
@@ -61,8 +63,12 @@ void MyGameEngine::render(RenderModes renderMode) {
         drawAxis();
     }
     
-#pragma region draw square
 
+
+    DrawPrism(positionCube, rotationCube, scaleCube, { 255, 0, 0, 255 });
+
+#pragma region draw square
+    /*
     glRotated(angle, 0, 0, 1);
 
     glBegin(GL_LINE_STRIP);
@@ -126,11 +132,8 @@ void MyGameEngine::render(RenderModes renderMode) {
 
     glEnd();
 
-
+    */
 #pragma endregion
-
-
-
 
 #pragma region direct draw test
     /*glRotated(angle, 0, 0, 1);

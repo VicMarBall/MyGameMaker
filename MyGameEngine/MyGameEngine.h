@@ -15,5 +15,7 @@ public:
 
 	void step(std::chrono::duration<double> dt);
 	void render(RenderModes renderMode);
+
+	vec3 positionCube = { 0, 0, 0 }, rotationCube = { 0, 0, 0 }, scaleCube = {1, 1, 1};
 };
 

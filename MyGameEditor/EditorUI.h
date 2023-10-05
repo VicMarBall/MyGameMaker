@@ -4,6 +4,8 @@
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl3.h"
 
+#include "../MyGameEngine/MyGameEngine.h"
+
 class EditorUI {
 	
 public:
@@ -54,7 +56,7 @@ public:
 
 		show_demo_window = true;
 		show_another_window = true;
-		dockSpaceEnabled = false;
+		dockSpaceEnabled = true;
 	}
 
 	void PreUpdate() {
@@ -121,6 +123,28 @@ public:
 			ImGui::Text("Hello from another window!");
 			if (ImGui::Button("Close Me"))
 				show_another_window = false;
+
+			ImGui::Text("POSITION");
+			ImGui::InputDouble("X", &engine->positionCube.x);
+			//ImGui::SameLine();
+			ImGui::InputDouble("Y", &engine->positionCube.y);
+			//ImGui::SameLine();
+			ImGui::InputDouble("Z", &engine->positionCube.z);
+
+			ImGui::Text("ROTATION");
+			ImGui::InputDouble("X", &engine->rotationCube.x);
+			//ImGui::SameLine();
+			ImGui::InputDouble("Y", &engine->rotationCube.y);
+			//ImGui::SameLine();
+			ImGui::InputDouble("Z", &engine->rotationCube.z);
+
+			ImGui::Text("SCALE");
+			ImGui::InputDouble("X", &engine->scaleCube.x);
+			//ImGui::SameLine();
+			ImGui::InputDouble("Y", &engine->scaleCube.y);
+			//ImGui::SameLine();
+			ImGui::InputDouble("Z", &engine->scaleCube.z);
+
 			ImGui::End();
 		}
 	}
@@ -154,4 +178,6 @@ public:
 	bool dockSpaceEnabled;
 
 	ImVec4 clear_color;
+
+	MyGameEngine* engine;
 };
