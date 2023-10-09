@@ -125,25 +125,25 @@ public:
 				show_another_window = false;
 
 			ImGui::Text("POSITION");
-			ImGui::InputDouble("X", &engine->positionCube.x);
+			ImGui::InputDouble("posX", &engine->positionCube.x);
 			//ImGui::SameLine();
-			ImGui::InputDouble("Y", &engine->positionCube.y);
+			ImGui::InputDouble("posY", &engine->positionCube.y);
 			//ImGui::SameLine();
-			ImGui::InputDouble("Z", &engine->positionCube.z);
+			ImGui::InputDouble("posZ", &engine->positionCube.z);
 
 			ImGui::Text("ROTATION");
-			ImGui::InputDouble("X", &engine->rotationCube.x);
+			ImGui::InputDouble("rotX", &engine->rotationCube.x);
 			//ImGui::SameLine();
-			ImGui::InputDouble("Y", &engine->rotationCube.y);
+			ImGui::InputDouble("rotY", &engine->rotationCube.y);
 			//ImGui::SameLine();
-			ImGui::InputDouble("Z", &engine->rotationCube.z);
+			ImGui::InputDouble("rotZ", &engine->rotationCube.z);
 
 			ImGui::Text("SCALE");
-			ImGui::InputDouble("X", &engine->scaleCube.x);
+			ImGui::InputDouble("scX", &engine->scaleCube.x);
 			//ImGui::SameLine();
-			ImGui::InputDouble("Y", &engine->scaleCube.y);
+			ImGui::InputDouble("scY", &engine->scaleCube.y);
 			//ImGui::SameLine();
-			ImGui::InputDouble("Z", &engine->scaleCube.z);
+			ImGui::InputDouble("scZ", &engine->scaleCube.z);
 
 			ImGui::End();
 		}
